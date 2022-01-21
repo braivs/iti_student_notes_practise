@@ -1,11 +1,11 @@
 import React from 'react';
 import {useSelector} from "react-redux";
-import {rootReducerType} from "./Redux/store";
+import {AppRootReducerType} from "./Redux/store";
 import {TaskType} from "../types/types";
 
 export function Todolist(props: PropsType) {
     // have inserted here useSelector and the line 28 we are drawing state without any props
-    let tasks = useSelector<rootReducerType, Array<TaskType>>(state => state.tasks)
+    let tasks = useSelector<AppRootReducerType, Array<TaskType>>(state => state.tasks)
     return <div>
         <h3>{props.title}</h3>
         <div>

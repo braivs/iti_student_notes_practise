@@ -43,3 +43,7 @@ export const removeTodolistAC3 = (id: number) => {
         id: id // id - that we get from dispatch
     } as const //'REMOVE TASK' - is not a string! - this is 'REMOVE-TASK3'
 }
+
+export const addTodolistAC = (todolist: string) =>
+    ({type: 'ADD-TODOLIST', todolist} as const)
+

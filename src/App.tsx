@@ -6,6 +6,7 @@ import {removeTaskAC, TasksReducer} from "./React/Reducer/TasksReducer";
 import {removeTodolistAC, todolistReducer} from "./React/Reducer/todolistReducer";
 import {useDispatch} from "react-redux";
 import {Todolist} from "./React/Todolist";
+import {useAppSelector} from "./React/Redux/store";
 
 // here is out app: menu(Nam) and Body
 // is the body will be drawing our page
@@ -30,8 +31,7 @@ function App() {
     //task - now we will get our state
     //           <from store, typing of our state>(we take state from needed reducer)
 
-
-
+    let isError = useAppSelector<string | null>(state => state.app.isError)
 
     function removeTask(id: number) {
         // here was with useState:
