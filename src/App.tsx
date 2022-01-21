@@ -4,6 +4,8 @@ import { Body } from './React/Routing/Body';
 import {Navigation} from "./React/Routing/Navigation";
 import {removeTaskAC, TasksReducer} from "./React/Reducer/TasksReducer";
 import {removeTodolistAC, todolistReducer} from "./React/Reducer/todolistReducer";
+import {useDispatch} from "react-redux";
+import {Todolist} from "./React/Todolist";
 
 // here is out app: menu(Nam) and Body
 // is the body will be drawing our page
@@ -23,6 +25,14 @@ function App() {
         {id: 1, title: '10', filter: false}
     ])
 
+    //creating dispatch - one for all useSelector
+    let dispatch = useDispatch()
+    //task - now we will get our state
+    //           <from store, typing of our state>(we take state from needed reducer)
+
+
+
+
     function removeTask(id: number) {
         // here was with useState:
         // let filteredTasks = tasks.filter(t => t.id != id)
@@ -36,11 +46,20 @@ function App() {
         todolistDispatch(removeTodolistAC(id))
     }
 
+    function removeTaskWithRedux(id: number) {
+        dispatch(removeTodolistAC(id))
+    }
+
     return (
         <div className="App">
             {/*<Immutability />*/}
             <Navigation />
             <Body />
+            <Todolist
+                // tasks - no more input tasks
+                title={'What to learn'}
+                removeTask={removeTask}
+            />
         </div>
     );
 }
