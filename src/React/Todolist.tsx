@@ -31,5 +31,5 @@ export function Todolist(props: PropsType) {
 
 type PropsType = {
     title: string
-    removeTask: (id: number) => void
+    removeTask: (id: string) => void
 }

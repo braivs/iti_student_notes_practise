@@ -1,7 +1,8 @@
-import {combineReducers, createStore} from "redux";
+import {applyMiddleware, combineReducers, createStore} from "redux";
 import {TasksReducer} from "../Reducer/TasksReducer";
 import {TypedUseSelectorHook, useSelector} from "react-redux";
 import {appReducer} from "../Reducer/appReducer";
+import thunk from "redux-thunk";
 
 // here we put our reducers
 let rootReducer = combineReducers({
@@ -24,4 +25,4 @@ export const useAppSelector: TypedUseSelectorHook<AppRootReducerType> = useSelec
 window.store = store
 
 //creating store and put inside of it rootReducer
-export let store=createStore(rootReducer)
+export const store=createStore(rootReducer, applyMiddleware(thunk))
