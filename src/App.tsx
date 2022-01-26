@@ -1,8 +1,8 @@
-import React, {useEffect, useReducer} from 'react';
+import React, {useCallback, useEffect, useReducer} from 'react';
 import './App.css';
 import {Body} from './React/Routing/Body';
 import {Navigation} from "./React/Routing/Navigation";
-import {RemoveTaskACThunk, TasksReducer} from "./React/Reducer/TasksReducer";
+import {RemoveTaskACThunk, removeTaskThunk, TasksReducer} from "./React/Reducer/tasks-reducer";
 import {removeTodolistAC, setTodosThunk, todolistReducer} from "./React/Reducer/todolistReducer";
 import {useDispatch} from "react-redux";
 import {Todolist} from "./React/Todolist";
@@ -41,10 +41,9 @@ function App() {
 
         // and then dispatch thunkCreator
         dispatch(setTodosThunk())
-    },[])
+    }, [])
 
     let isError = useAppSelector<string | null>(state => state.app.isError)
-
 
 
     function removeTask(id: string) {
@@ -66,11 +65,16 @@ function App() {
         dispatch(removeTodolistAC(id))
     }
 
+    const removeTaskWithPayload = useCallback(function (id: string, todolistId: string) {
+       let payload = {todolistId: todolistId, taskId: id}
+        dispatch(removeTaskThunk(payload))
+    }, [])
+
     return (
         <div className="App">
             {/*<Immutability />*/}
-            <Navigation />
-            <Body />
+            <Navigation/>
+            <Body/>
             <Todolist
                 // tasks - no more input tasks
                 title={'What to learn'}
@@ -79,7 +83,6 @@ function App() {
         </div>
     );
 }
-
 
 
 export default App;

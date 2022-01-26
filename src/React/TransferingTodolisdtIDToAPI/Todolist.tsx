@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {useDispatch} from "react-redux";
-import {fetchTasksThunk} from "../Reducer/TasksReducer";
+import {fetchTasksThunk} from "../Reducer/tasks-reducer";
 
 type PropsType = {
     id: string

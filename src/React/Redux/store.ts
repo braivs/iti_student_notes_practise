@@ -1,5 +1,5 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
-import {TasksReducer} from "../Reducer/TasksReducer";
+import {TasksReducer} from "../Reducer/tasks-reducer";
 import {TypedUseSelectorHook, useSelector} from "react-redux";
 import {appReducer} from "../Reducer/appReducer";
 import thunk from "redux-thunk";
